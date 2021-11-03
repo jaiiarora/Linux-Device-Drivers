@@ -210,3 +210,4 @@ module_exit(etx_driver_exit);
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("A simple device driver - Interrupts");
 MODULE_VERSION("1.9");
+
