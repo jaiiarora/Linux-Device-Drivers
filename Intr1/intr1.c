@@ -11,7 +11,7 @@ Binds to IRQ1
 #include <asm/io.h>
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("JAI ARORA");
+
 
 /*
 ISR
@@ -56,7 +56,7 @@ static int __init irq_ex_init(void)
 static void __exit irq_ex_exit(void)
 {
   printk(KERN_INFO "!Unloading Module \n");
-  free_irq(1,NULL);
+  free_irq(1,(void*)irq_handler);
 }
 
 module_init(irq_ex_init);
