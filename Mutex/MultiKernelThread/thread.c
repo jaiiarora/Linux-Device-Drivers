@@ -18,10 +18,7 @@
 #include <linux/kthread.h>             //kernel threads
 #include <linux/sched.h>               //task_struct
 #include <linux/delay.h>
-#include <linux/mutex.h>
 
-struct mutex etx_mutex;
-unsigned  long etx_global_variable=0;
 
 dev_t dev = 0;
 static struct class *dev_class;
@@ -47,39 +44,17 @@ static ssize_t etx_write(struct file *filp,
 int thread_function(void *pv);
 
 /*
-** Thread Function 1
+** Thread
 */
-int thread_function1(void *pv)
+int thread_function(void *pv)
 {
-
+    int i=0;
     while(!kthread_should_stop()) {
-	
-        mutex_lock(&etx_mutex);
-        etx_global_variable++;
-	pr_info("In Thread Function 1 %lu\n", etx_global_variable);
-	mutex_unlock(&etx_mutex);
+        pr_info("In EmbeTronicX Thread Function %d\n", i++);
         msleep(1000);
     }
     return 0;
 }
-
-/*
- * Thread Function 2
- */
-
-int thread_function2(void *pv)
-{
-    while(!kthread_should_stop()) {
-        mutex_lock(&etx_mutex);
-        etx_global_variable++;
-        pr_info("In Thread Function 2 %lu\n", etx_global_variable);
-        mutex_unlock(&etx_mutex);
-        msleep(1000);
-    }
-    return 0;
-}
-
-
 
 /*
 ** File operation sturcture
@@ -165,8 +140,8 @@ static int __init etx_driver_init(void)
             goto r_device;
         }
 
-        etx_thread = kthread_create(thread_function1,NULL,"eTx Thread1");
- 	etx_thread1=kthread_create(thread_function2, NULL, "eTx Thread2");
+        etx_thread = kthread_create(thread_function,NULL,"eTx Thread");
+ 	etx_thread1=kthread_create(thread_function, NULL, "eTx Thread Alt");
  	if(etx_thread && etx_thread1) {
             wake_up_process(etx_thread);
 	    wake_up_process(etx_thread1);
