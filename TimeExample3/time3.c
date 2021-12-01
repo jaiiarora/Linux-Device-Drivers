@@ -4,6 +4,7 @@
 #include <linux/moduleparam.h>
 #include <linux/jiffies.h>
 #include <linux/kernel.h>
+#include <asm/io.h>
 
 #define CAPS_LED 4
 
