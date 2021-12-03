@@ -45,10 +45,12 @@ static int __init sleepy_init(void)
 {
 	int result;
 	result=register_chrdev(sleepy_major, "sleepy", &sleepy_fops);
+	 
 	if (result<0)
 		return result;
 	if (sleepy_major==0)
 		sleepy_major=result;
+	pr_info("%d\n", sleepy_major);
 	return 0;
 }
 
