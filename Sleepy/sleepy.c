@@ -2,6 +2,8 @@
  * sleepy.c module
  */
 
+//need to create a device file for this module with the major number
+
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/sched.h>
@@ -22,7 +24,7 @@ ssize_t sleepy_read(struct file* filp,  char __user* buff, size_t count, loff_t*
 			current->pid, current->comm);
 	wait_event_interruptible(wq, flag!=0);
 	flag=0;
-	pr_info("awoken %i %(s)\n", current->pid, current->comm);
+	pr_info("awoken %i (%s)\n", current->pid, current->comm);
 	return 0;
 }
 
