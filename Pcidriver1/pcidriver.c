@@ -12,11 +12,11 @@
 #include <asm/uaccess.h>
 #include <asm/io.h>
 
-MODULE_AUTHOR("Hai Dang Hoang");
+MODULE_AUTHOR("JAI ARORA");
 MODULE_LICENSE("GPL");
 #define DEVICE_NAME "pci_test"
-#define VENDOR_ID 0x8086        /* Intel */
-#define DEVICE_ID 0x100F        /* Ethernet Controller */
+#define VENDOR_ID 0x10EC        /* Intel */
+#define DEVICE_ID 0x8136        /* Ethernet Controller */
 #define REG_STATUS 0x0008       /* Status register */
 #define ADDR_REG_LEDS 0x00E00   /* Address LED_CTRL */
 
