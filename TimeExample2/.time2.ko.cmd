@@ -1,1 +1,0 @@
-cmd_/home/airj23/Documents/ModularProgramming/TimeExample2/time2.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/airj23/Documents/ModularProgramming/TimeExample2/time2.ko /home/airj23/Documents/ModularProgramming/TimeExample2/time2.o /home/airj23/Documents/ModularProgramming/TimeExample2/time2.mod.o ;  true
